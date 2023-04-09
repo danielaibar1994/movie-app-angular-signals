@@ -1,0 +1,15 @@
+<ng-container *ngIf="(selectedMovie$ | async) as movie">
+    <div class="detail-container">
+        <app-movie-card *ngIf="!isEditMode" [movie]="movie" [isDetail]="true"></app-movie-card>
+
+        <app-edit-movie *ngIf="isEditMode" [movie]="movie" [actors]="(actors$ | async) || []"
+            [companies]="(companies$ | async) || []" (cancelEvent)="changeEditMode(false)"
+            (saveEvent)="saveMovie(movie.id, $event)"></app-edit-movie>
+
+
+        <div class="actions">
+            <button *ngIf="!isEditMode" (click)="changeEditMode(true)" class="primary-button ">Edit</button>
+            <button *ngIf="!isEditMode" class="primary-button warning" (click)="goToHome()">Go Back &#10132;</button>
+        </div>
+    </div>
+</ng-container>

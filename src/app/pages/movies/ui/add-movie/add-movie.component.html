@@ -1,0 +1,2 @@
+<app-edit-movie [movie]="movie" [actors]="(actors$ | async) || []" [companies]="(companies$ | async) || []"
+    (cancelEvent)="cancel()" (saveEvent)="saveMovie($event)"></app-edit-movie>

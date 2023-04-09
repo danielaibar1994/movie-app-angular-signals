@@ -1,0 +1,9 @@
+<ng-container *ngIf="(movies$ | async) as movies">
+    <div>
+        <button class="primary-button" (click)="navigateNewMovie()">New Movie</button>
+    </div>
+    <div class="movies-card-container">
+        <app-movie-card *ngFor="let movie of movies" [movie]="movie"
+            [routerLink]="['detail', movie.id]"></app-movie-card>
+    </div>
+</ng-container>

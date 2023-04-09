@@ -1,0 +1,32 @@
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.tag {
+    background-color: lightgray;
+    padding: 4px 8px;
+    border-radius: 25px;
+    margin-right: 4px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+input, select {
+    width: 100%;
+    height: 30px;
+}
+
+.register-form {
+    padding: 16px 8px;
+}
+
+.delete-tag {
+    padding: 0 4px;
+    cursor: pointer;
+}

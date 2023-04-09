@@ -1,0 +1,21 @@
+<div class="card-container">
+    <div class="card-image">
+        <img appImageLoader src="{{ movie.poster }}" alt="{{ movie.title}}">
+    </div>
+    <div class="card-detail">
+        <p class="card-title">{{ movie.title }}</p>
+
+        <p class="data-title" *ngIf="movie.genre?.length">Genres</p>
+        <span *ngFor="let tag of movie.genre" class="tag">{{ tag }}</span>
+    </div>
+
+    <div class="extra-info" *ngIf="isDetail">
+
+        <p class="data-title" *ngIf="movie.actorsNames?.length">Actors</p>
+        <span *ngFor="let actorName of movie.actorsNames" class="tag actor-name">{{ actorName }}</span>
+
+        <p class="data-title" *ngIf="movie.companyName?.length">Company</p>
+        <span *ngIf="movie.companyName?.length" class="tag company-name">{{ movie.companyName }}</span>
+
+    </div>
+</div>
