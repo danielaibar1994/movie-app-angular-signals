@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/api/models/movie.interface';
+import { actorsSignal, companiesSignal, selectedMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
 
 @Component({
   selector: 'app-movie-detail',
@@ -9,9 +10,17 @@ import { Movie } from 'src/app/api/models/movie.interface';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  selectedMovie$ = this.service.selectedMovie$;
-  actors$ = this.service.actors$;
-  companies$ = this.service.companies$;
+  get selectedMovie() {
+    return selectedMovieSignal();
+  }
+
+  get actors() {
+    return actorsSignal();
+  }
+
+  get companies() {
+    return companiesSignal();
+  }
 
   idMovie: string | null = '';
 

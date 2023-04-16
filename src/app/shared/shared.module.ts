@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UiImageLoaderDirective } from './directives/not-image/image-loader.directive';
+import { RouterModule } from '@angular/router';
 
 // const EXPORT_COMPONENTS = [
 //   CardComponent, SkeletonComponent,
@@ -13,7 +14,7 @@ const EXPORT_DIRECTIVES = [UiImageLoaderDirective];
 @NgModule({
   declarations: [...EXPORT_DIRECTIVES],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [...EXPORT_DIRECTIVES]
 })

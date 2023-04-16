@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Movie } from 'src/app/api/models/movie.interface';
-import { tap } from 'rxjs';
+import { filter, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { actorsSignal, companiesSignal, newMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
 
 @Component({
   selector: 'app-add-movie',
@@ -10,10 +11,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
-  actors$ = this.service.actors$;
-  companies$ = this.service.companies$;
+  e = effect((e) => this.checkNewMovie(newMovieSignal()));
 
-  newMovie$ = this.service.newMovie$.pipe(tap((movie) => { this.checkNewMovie(movie) })).subscribe();
+  get newMovie() {
+    return newMovieSignal();
+  }
+
+  get actors() {
+    return actorsSignal();
+  }
+
+  get companies() {
+    return companiesSignal();
+  }
 
   movie: Movie = {
     id: -1,

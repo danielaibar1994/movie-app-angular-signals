@@ -18,7 +18,7 @@ import { AddMovieComponent } from './ui/add-movie/add-movie.component';
     MoviesRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class MoviesModule { }
