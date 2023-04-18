@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appImageLoader]'
+  selector: '[appImageLoader]',
+  standalone: true,
 })
 export class UiImageLoaderDirective {
   private onErrorSrc = 'assets/images/no-image.png';

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Movie } from 'src/app/api/models/movie.interface';
 import { MoviesSignal } from 'src/app/pages/movies/signals/movies/movies-signal.service';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
-
-    constructor(private readonly store: MoviesSignal) { }
+    private store = inject(MoviesSignal);
 
     getData(): void {
         this.store.getMovies();

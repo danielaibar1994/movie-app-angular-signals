@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Movie } from 'src/app/api/models/movie.interface';
 import { Observable, combineLatest, first, retry, tap } from 'rxjs';
-import { MoviesService } from 'src/app/api/services/movies.service';
+import { MoviesRepository } from 'src/app/api/services/movies.service';
 import { ActorService } from 'src/app/api/services/actor.service';
 import { CompanyService } from 'src/app/api/services/company.service';
 import { Actor } from 'src/app/api/models/actor.interface';
@@ -10,11 +10,10 @@ import { actorsSignal, companiesSignal, moviesSignal, newMovieSignal, selectedMo
 
 @Injectable({ providedIn: 'root' })
 export class MoviesSignal {
-    constructor(
-        private readonly repository: MoviesService,
-        private readonly actorsRepository: ActorService,
-        private readonly companiesRepository: CompanyService) {
-    }
+
+    private repository = inject(MoviesRepository);
+    private actorsRepository = inject(ActorService);
+    private companiesRepository = inject(CompanyService);
 
     getMovies(): void { this.callMoviesList(); }
 
