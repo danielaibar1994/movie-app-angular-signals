@@ -1,13 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Actor } from 'src/app/api/models/actor.interface';
 import { Company } from 'src/app/api/models/company.interface';
 import { Movie } from 'src/app/api/models/movie.interface';
 
 @Component({
   selector: 'app-edit-movie',
+  standalone: true,
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './edit-movie.component.html',
-  styleUrls: ['./edit-movie.component.css']
+  styleUrls: ['./edit-movie.component.css'],
+
 })
 export class EditMovieComponent implements OnInit {
 

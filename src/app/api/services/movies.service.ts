@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -8,7 +8,9 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MoviesService {
+export class MoviesRepository {
+
+  private http = inject(HttpClient);
 
   // API path
   basePath = environment.apiUrl + '/movies';
@@ -21,7 +23,7 @@ export class MoviesService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {

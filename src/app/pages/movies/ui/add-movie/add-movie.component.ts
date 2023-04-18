@@ -4,9 +4,13 @@ import { Movie } from 'src/app/api/models/movie.interface';
 import { filter, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { actorsSignal, companiesSignal, newMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
+import { EditMovieComponent } from '../../components/edit-movie/edit-movie.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-movie',
+  standalone: true,
+  imports: [EditMovieComponent, CommonModule],
   templateUrl: './add-movie.component.html',
   styleUrls: ['./add-movie.component.css']
 })

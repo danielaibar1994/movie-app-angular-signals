@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -21,7 +21,7 @@ export class ActorService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {

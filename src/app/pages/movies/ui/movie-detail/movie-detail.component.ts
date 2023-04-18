@@ -3,9 +3,14 @@ import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/api/models/movie.interface';
 import { actorsSignal, companiesSignal, selectedMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { EditMovieComponent } from '../../components/edit-movie/edit-movie.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
+  standalone: true,
+  imports: [MovieCardComponent, EditMovieComponent, CommonModule],
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
