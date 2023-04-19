@@ -2,17 +2,17 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 
-import { MoviesService } from './movies.service';
+import { MoviesRepository } from './movies.service';
 
 describe('MoviesService', () => {
-  let service: MoviesService;
+  let service: MoviesRepository;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    service = TestBed.inject(MoviesService);
+    service = TestBed.inject(MoviesRepository);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -93,9 +93,6 @@ describe('MoviesService', () => {
     expect(req.request.method).toBe('PUT');
     req.flush(mockDetailData);
   });
-
-
-
 
 });
 

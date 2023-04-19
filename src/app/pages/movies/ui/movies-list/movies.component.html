@@ -1,9 +1,14 @@
 <ng-container *ngIf="movies">
-    <div>
-        <button class="primary-button" (click)="navigateNewMovie()">New Movie</button>
-    </div>
-    <div class="movies-card-container">
-        <app-movie-card *ngFor="let movie of movies" [movie]="movie"
-            (click)="navigateToMovie(movie.id)"></app-movie-card>
-    </div>
+  <div class="actions-container">
+    <button class="primary-button" (click)="navigateNewMovie()">
+      New Movie
+    </button>
+  </div>
+  <div class="movies-card-container">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      (click)="navigateToMovie(movie.id)"
+    ></app-movie-card>
+  </div>
 </ng-container>

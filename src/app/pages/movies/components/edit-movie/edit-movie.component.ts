@@ -1,6 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Actor } from 'src/app/api/models/actor.interface';
 import { Company } from 'src/app/api/models/company.interface';
 import { Movie } from 'src/app/api/models/movie.interface';
@@ -11,10 +21,8 @@ import { Movie } from 'src/app/api/models/movie.interface';
   imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './edit-movie.component.html',
   styleUrls: ['./edit-movie.component.css'],
-
 })
 export class EditMovieComponent implements OnInit {
-
   @Input() movie!: Movie;
   @Input() actors!: Actor[];
   @Input() companies!: Company[];
@@ -24,11 +32,10 @@ export class EditMovieComponent implements OnInit {
 
   form!: FormGroup;
   submitted = false;
-
   genreInput = '';
   actorsInput = -1;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.init();
@@ -41,10 +48,8 @@ export class EditMovieComponent implements OnInit {
       return;
     }
 
-    const editMovie: Movie = { ...this.form.value }
+    const editMovie: Movie = { ...this.form.value };
     this.saveEvent.emit(editMovie);
-
-    // console.log(JSON.stringify(this.form.value, null, 2));
   }
 
   onCancel(): void {
@@ -60,7 +65,11 @@ export class EditMovieComponent implements OnInit {
 
   onEnter() {
     if (this.genreInput.length) {
-      if (this.genresControl.value.some((genre: string) => genre === this.genreInput)) {
+      if (
+        this.genresControl.value.some(
+          (genre: string) => genre === this.genreInput
+        )
+      ) {
         console.error('Duplicated Genre');
         return;
       }
@@ -70,14 +79,16 @@ export class EditMovieComponent implements OnInit {
   }
 
   onEnterActor() {
-    if (this.actorsControl.value.some((actor: number) => actor === +this.actorsInput)) {
+    if (
+      this.actorsControl.value.some(
+        (actor: number) => actor === +this.actorsInput
+      )
+    ) {
       console.error('Duplicated Actor');
       return;
     }
     this.actorsControl.push(new FormControl(+this.actorsInput));
     this.actorsInput = -1;
-
-
   }
 
   removeActor(id: number): void {
@@ -93,31 +104,28 @@ export class EditMovieComponent implements OnInit {
   }
 
   get genresControl(): FormArray {
-    return this.form.get("genre") as FormArray
+    return this.form.get('genre') as FormArray;
   }
 
   get actorsControl(): FormArray {
-    return this.form.get("actors") as FormArray
+    return this.form.get('actors') as FormArray;
   }
 
   getActorName(id: number): string {
-    const actor = this.actors.find((actor) => actor.id === id)
+    const actor = this.actors.find((actor) => actor.id === id);
     return actor ? actor.first_name + ' ' + actor.last_name : id.toString();
   }
 
   private init() {
-    this.form = this.formBuilder.group(
-      {
-        title: [this.movie.title, Validators.required],
-        poster: [this.movie.poster, Validators.required],
-        genre: this.formBuilder.array(this.movie.genre),
-        year: [this.movie.year, Validators.required],
-        duration: [this.movie.duration, Validators.required],
-        imdbRating: [this.movie.imdbRating, Validators.required],
-        actors: this.formBuilder.array(this.movie.actors),
-        company: [this.movie.company, Validators.required]
-      }
-    );
+    this.form = this.formBuilder.group({
+      title: [this.movie.title, Validators.required],
+      poster: [this.movie.poster, Validators.required],
+      genre: this.formBuilder.array(this.movie.genre),
+      year: [this.movie.year, Validators.required],
+      duration: [this.movie.duration, Validators.required],
+      imdbRating: [this.movie.imdbRating, Validators.required],
+      actors: this.formBuilder.array(this.movie.actors),
+      company: [this.movie.company, Validators.required],
+    });
   }
-
 }

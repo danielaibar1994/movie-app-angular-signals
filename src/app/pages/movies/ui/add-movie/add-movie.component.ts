@@ -3,7 +3,11 @@ import { MoviesService } from '../../services/movies.service';
 import { Movie } from 'src/app/api/models/movie.interface';
 import { filter, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { actorsSignal, companiesSignal, newMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
+import {
+  actorsSignal,
+  companiesSignal,
+  newMovieSignal,
+} from 'src/app/pages/movies/signals/movies/movies.store';
 import { EditMovieComponent } from '../../components/edit-movie/edit-movie.component';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +16,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [EditMovieComponent, CommonModule],
   templateUrl: './add-movie.component.html',
-  styleUrls: ['./add-movie.component.css']
+  styleUrls: ['./add-movie.component.css'],
 })
 export class AddMovieComponent implements OnInit {
   e = effect((e) => this.checkNewMovie(newMovieSignal()));
@@ -38,10 +42,13 @@ export class AddMovieComponent implements OnInit {
     company: undefined,
     year: 2000,
     duration: 0,
-    imdbRating: 0
-  }
+    imdbRating: 0,
+  };
 
-  constructor(private readonly service: MoviesService, private router: Router) { }
+  constructor(
+    private readonly service: MoviesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.init();
@@ -55,7 +62,6 @@ export class AddMovieComponent implements OnInit {
     this.service.saveMovie(editMovie);
   }
 
-
   private init() {
     this.service.getActors();
     this.service.getCompanies();
@@ -66,5 +72,4 @@ export class AddMovieComponent implements OnInit {
       this.router.navigate(['movies', 'detail', movie.id]);
     }
   }
-
 }

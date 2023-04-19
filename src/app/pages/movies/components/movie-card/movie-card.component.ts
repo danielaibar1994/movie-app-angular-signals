@@ -11,8 +11,6 @@ import { UiImageLoaderDirective } from 'src/app/shared/directives/not-image/imag
   imports: [NgIf, NgFor, UiImageLoaderDirective],
 })
 export class MovieCardComponent {
-
   @Input() movie!: Movie;
   @Input() isDetail: boolean = false;
-
 }
