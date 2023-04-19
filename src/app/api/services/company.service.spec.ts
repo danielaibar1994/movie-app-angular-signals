@@ -58,7 +58,7 @@ describe('CompanyService', () => {
   };
 
   it('getItem() should return transformed data', () => {
-    service.getItem(1).subscribe((res) => {
+    service.getItem('1').subscribe((res) => {
       expect(res).toEqual(mockDetailData);
     });
 
@@ -81,7 +81,7 @@ describe('CompanyService', () => {
 
 
   it('updateItem() should PUT and return data', () => {
-    service.updateItem(1, mockDetailData).subscribe((res) => {
+    service.updateItem('1', mockDetailData).subscribe((res) => {
       expect(res).toEqual(mockDetailData);
     });
 

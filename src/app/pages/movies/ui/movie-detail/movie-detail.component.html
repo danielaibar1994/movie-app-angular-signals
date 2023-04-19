@@ -1,14 +1,35 @@
 <ng-container *ngIf="selectedMovie">
-    <div class="detail-container">
-        <app-movie-card *ngIf="!isEditMode" [movie]="selectedMovie" [isDetail]="true"></app-movie-card>
+  <div class="detail-container">
+    <app-movie-card
+      *ngIf="!isEditMode"
+      [movie]="selectedMovie"
+      [isDetail]="true"
+    ></app-movie-card>
 
-        <app-edit-movie *ngIf="isEditMode" [movie]="selectedMovie" [actors]="actors" [companies]="companies"
-            (cancelEvent)="changeEditMode(false)" (saveEvent)="saveMovie(selectedMovie.id, $event)"></app-edit-movie>
+    <app-edit-movie
+      *ngIf="isEditMode"
+      [movie]="selectedMovie"
+      [actors]="actors"
+      [companies]="companies"
+      (cancelEvent)="changeEditMode(false)"
+      (saveEvent)="saveMovie(selectedMovie.id, $event)"
+    ></app-edit-movie>
 
-
-        <div class="actions">
-            <button *ngIf="!isEditMode" (click)="changeEditMode(true)" class="primary-button ">Edit</button>
-            <button *ngIf="!isEditMode" class="primary-button warning" (click)="goToHome()">Go Back &#10132;</button>
-        </div>
+    <div class="actions">
+      <button
+        *ngIf="!isEditMode"
+        (click)="changeEditMode(true)"
+        class="primary-button"
+      >
+        Edit
+      </button>
+      <button
+        *ngIf="!isEditMode"
+        class="primary-button warning"
+        (click)="goToHome()"
+      >
+        Go Back &#10132;
+      </button>
     </div>
+  </div>
 </ng-container>
