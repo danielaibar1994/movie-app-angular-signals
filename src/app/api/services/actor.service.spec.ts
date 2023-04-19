@@ -64,7 +64,7 @@ describe('ActorService', () => {
 
 
   it('getItem() should return trasnformed data', () => {
-    service.getItem(1).subscribe((res) => {
+    service.getItem('1').subscribe((res) => {
       expect(res).toEqual(mockDetailData);
     });
 
@@ -87,7 +87,7 @@ describe('ActorService', () => {
 
 
   it('updateItem() should PUT and return data', () => {
-    service.updateItem(1, mockDetailData).subscribe((res) => {
+    service.updateItem('1', mockDetailData).subscribe((res) => {
       expect(res).toEqual(mockDetailData);
     });
 
@@ -95,9 +95,5 @@ describe('ActorService', () => {
     expect(req.request.method).toBe('PUT');
     req.flush(mockDetailData);
   });
-
-
-
-
 
 });

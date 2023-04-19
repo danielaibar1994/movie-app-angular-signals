@@ -9,8 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [HttpClientModule,
-    RouterOutlet, NavbarComponent],
+  imports: [HttpClientModule, RouterOutlet, NavbarComponent],
 })
 export class AppComponent {
   title = 'movie-app-angular-signals';

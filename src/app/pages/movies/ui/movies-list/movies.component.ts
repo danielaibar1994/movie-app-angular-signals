@@ -22,8 +22,6 @@ export class MoviesComponent implements OnInit {
     return moviesSignal();
   }
 
-  // constructor(private readonly service: MoviesService, private router: Router) { }
-
   private service = inject(MoviesService);
   private router = inject(Router);
 
@@ -38,5 +36,4 @@ export class MoviesComponent implements OnInit {
   navigateToMovie(id: number): void {
     this.router.navigate(['movies', 'detail', id]);
   }
-
 }

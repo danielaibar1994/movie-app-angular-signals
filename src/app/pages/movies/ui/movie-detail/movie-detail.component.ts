@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/api/models/movie.interface';
-import { actorsSignal, companiesSignal, selectedMovieSignal } from 'src/app/pages/movies/signals/movies/movies.store';
+import {
+  actorsSignal,
+  companiesSignal,
+  selectedMovieSignal,
+} from 'src/app/pages/movies/signals/movies/movies.store';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { EditMovieComponent } from '../../components/edit-movie/edit-movie.component';
 import { CommonModule } from '@angular/common';
@@ -12,7 +16,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MovieCardComponent, EditMovieComponent, CommonModule],
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  styleUrls: ['./movie-detail.component.css'],
 })
 export class MovieDetailComponent implements OnInit {
   get selectedMovie() {
@@ -28,10 +32,13 @@ export class MovieDetailComponent implements OnInit {
   }
 
   idMovie: string | null = '';
-
   isEditMode: boolean = false;
 
-  constructor(private readonly service: MoviesService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(
+    private readonly service: MoviesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.init();
@@ -54,7 +61,7 @@ export class MovieDetailComponent implements OnInit {
     this.idMovie = this.activatedRoute.snapshot.paramMap.get('id');
 
     if (this.idMovie) {
-      this.service.getMovieDetail(this.idMovie)
+      this.service.getMovieDetail(this.idMovie);
     }
   }
 }
